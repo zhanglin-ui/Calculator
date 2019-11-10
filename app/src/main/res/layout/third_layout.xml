@@ -5,8 +5,13 @@
     <EditText
         android:id="@+id/edit_text"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/text"
         android:background="#FFFFFF"/>
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
     <View
         android:id="@+id/view1"
         android:layout_width="match_parent"
@@ -37,14 +42,15 @@
         android:background="#FFFFFF"
         android:layout_toRightOf="@id/button8"
         android:text="9"/>
+
     <Button
         android:id="@+id/button10"
         android:layout_width="111dp"
         android:layout_height="100dp"
         android:layout_below="@+id/view1"
-        android:background="#FFFFFF"
         android:layout_alignRight="@id/view1"
-        android:text="/"/>
+        android:background="#FFFFFF"
+        android:text="/" />
     <Button
         android:id="@+id/button4"
         android:layout_width="100dp"
@@ -129,7 +135,7 @@
         android:layout_below="@+id/button3"
         android:layout_toRightOf="@id/button14"
         android:background="#FFFFFF"
-        android:text="Delete"/>
+        android:text="删除"/>
     <Button
         android:id="@+id/button16"
         android:layout_width="110dp"
