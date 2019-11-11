@@ -50,7 +50,7 @@
         android:layout_below="@+id/view1"
         android:layout_alignRight="@id/view1"
         android:background="#FFFFFF"
-        android:text="/" />
+        android:text="÷" />
     <Button
         android:id="@+id/button4"
         android:layout_width="100dp"
@@ -81,7 +81,7 @@
         android:layout_below="@+id/button10"
         android:layout_toRightOf="@id/button6"
         android:background="#FFFFFF"
-        android:text="*"/>
+        android:text="×"/>
     <Button
         android:id="@+id/button1"
         android:layout_width="100dp"

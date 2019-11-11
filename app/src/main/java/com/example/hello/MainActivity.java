@@ -71,67 +71,119 @@ import android.widget.TextView;
           button1.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
-                  edit_text.setText("1");
                   text.setText(text.getText().toString()+"1");
               }
           });
           button2.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
-                  edit_text.setText("2");
                   text.setText(text.getText().toString()+"2");
               }
           });
           button3.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
-                  edit_text.setText("3");
                   text.setText(text.getText().toString()+"3");
               }
           });
           button4.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
-                  edit_text.setText("4");
-                  text.setText(edit_text.getText().toString());
+                  text.setText(text.getText().toString()+"4");
               }
           });
           button5.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
-                  edit_text.setText("5");
-                  text.setText(edit_text.getText().toString());
+                  text.setText(text.getText().toString()+"5");
               }
           });
           button6.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
-                  edit_text.setText("6");
-                  text.setText(edit_text.getText().toString());
+                  text.setText(text.getText().toString()+"6");
               }
           });
           button7.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
-                  edit_text.setText("7");
-                  text.setText(edit_text.getText().toString());
+                  text.setText(text.getText().toString()+"7");
               }
           });
           button8.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
-                  edit_text.setText("8");
-                  text.setText(edit_text.getText().toString());
+                  text.setText(text.getText().toString()+"8");
               }
           });
           button9.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
-                  edit_text.setText("9");
-                  text.setText(edit_text.getText().toString());
+                  text.setText(text.getText().toString()+"9");
+              }
+          });
+          button10.setOnClickListener(new View.OnClickListener(){
+              @Override
+              public void onClick(View v){
+                  text.setText(text.getText().toString()+" ÷");
+              }
+          });
+          button11.setOnClickListener(new View.OnClickListener(){
+              @Override
+              public void onClick(View v){
+                  text.setText(text.getText().toString()+"×");
+              }
+          });
+          button12.setOnClickListener(new View.OnClickListener(){
+              @Override
+              public void onClick(View v){
+                  text.setText(text.getText().toString()+"+");
+              }
+          });
+          button13.setOnClickListener(new View.OnClickListener(){
+              @Override
+              public void onClick(View v){
+                  text.setText(text.getText().toString()+".");
+              }
+          });
+          button14.setOnClickListener(new View.OnClickListener(){
+              @Override
+              public void onClick(View v){
+                  text.setText(text.getText().toString()+"0");
+              }
+          });
+          button15.setOnClickListener(new View.OnClickListener(){
+              @Override
+              public void onClick(View v){
+                  text.setText("");
+              }
+          });
+          button16.setOnClickListener(new View.OnClickListener(){
+              @Override
+              public void onClick(View v){
+                  text.setText(text.getText().toString()+"-");
+              }
+          });
+          button17.setOnClickListener(new View.OnClickListener(){
+              @Override
+              public void onClick(View v){
+                  text.setText(text.getText().toString()+"sin");
+              }
+          });
+          button18.setOnClickListener(new View.OnClickListener(){
+              @Override
+              public void onClick(View v){
+                  text.setText(text.getText().toString()+"cos");
+              }
+          });
+          button19.setOnClickListener(new View.OnClickListener(){
+              @Override
+              public void onClick(View v){
+                  text.setText(text.getText().toString()+"tan");
               }
           });
           }
+
 
       @Override
       public boolean onCreateOptionsMenu(Menu menu) {
