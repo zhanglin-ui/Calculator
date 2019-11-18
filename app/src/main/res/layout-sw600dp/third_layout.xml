@@ -5,11 +5,8 @@
     <TextView
         android:id="@+id/text"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:textSize="50dp"
-        android:background="#FFFFFF"/>
+        android:layout_height="200dp" />
     <View
-
         android:id="@+id/view1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -162,27 +159,20 @@
         android:text="cos"/>
     <Button
         android:id="@+id/button19"
-        android:layout_width="50dp"
+        android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_below="@+id/button15"
         android:layout_toRightOf="@id/button18"
         android:background="#FFFFFF"
-        android:text="（"/>
-    <Button
-        android:id="@+id/button21"
-        android:layout_width="50dp"
-        android:layout_height="100dp"
-        android:layout_toRightOf="@id/button19"
-        android:layout_below="@+id/button15"
-        android:text=")"
-        android:background="#FFFFFF"/>
+        android:text="tan"/>
     <Button
         android:id="@+id/button20"
         android:layout_width="110dp"
         android:layout_height="100dp"
         android:layout_below="@+id/button16"
-        android:layout_toRightOf="@+id/button21"
+        android:layout_toRightOf="@+id/button19"
         android:background="@color/colorPrimary"
-        android:text="=" />
+        android:text="="
+        android:onClick="Result"/>
 
 </RelativeLayout>
