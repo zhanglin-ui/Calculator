@@ -1,6 +1,10 @@
 package com.example.hello;
 
 import android.os.Bundle;
+
+
+
+import android.view.Menu;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
@@ -8,6 +12,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import static com.example.hello.Index.Houzui;
 import static java.lang.Integer.parseInt;
 import static java.lang.Math.sin;
 import static java.lang.Math.cos;
@@ -35,10 +40,12 @@ public class MainActivity2 extends AppCompatActivity {
     private Button button20;
     private Button button21;
     private TextView text;
-    private String ss="";
-    private String s="";
-    int d=0;
-    boolean  e;
+    private String ss = "";
+    private String s = "";
+    int d = 0, a = 0;
+    boolean e = true;
+    String c;
+    public double PI = 4 * Math.atan(1);
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,129 +76,151 @@ public class MainActivity2 extends AppCompatActivity {
         button1.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                ss+="1";
+                ss += "1";
                 text.setText(ss);
             }
         });
         button2.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                ss+="2";
+                ss += "2";
                 text.setText(ss);
             }
         });
         button3.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                ss+="3";
+                ss += "3";
                 text.setText(ss);
             }
         });
         button4.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                ss+="4";
+                ss += "4";
                 text.setText(ss);
             }
         });
         button5.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                ss+="5";
+                ss += "5";
                 text.setText(ss);
             }
         });
         button6.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                ss+="6";
+                ss += "6";
                 text.setText(ss);
             }
         });
         button7.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                ss+="7";
+                ss += "7";
                 text.setText(ss);
             }
         });
         button8.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                ss+="8";
+                ss += "8";
                 text.setText(ss);
             }
         });
         button9.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                ss+="9";text.setText(ss);
+                ss += "9";
+                text.setText(ss);
             }
         });
         button14.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(ss.length()!=0){
-                    ss+="0";
+                if (ss.length() != 0) {
+                    ss += "0";
                     text.setText(ss);
-                }
-                else return;
+                } else return;
             }
         });
         button15.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                ss="";
+                if (ss.length() != 0) {
+                    ss = ss.substring(0, ss.length() - 1);
+                    text.setText(ss);
+                    e = true;
+                }
+            }
+        });
+        button15.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                ss = "";
                 text.setText(ss);
+                e = true;
+                return false;
             }
         });
         button10.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (ss.length() != 0) {
-                    s=ss.substring(ss.length()-1,ss.length());
-                    if(s.equals("÷")|| s.equals("×") || s.equals("+") || s.equals("-")){
-                        ss=ss.substring(0,ss.length()-1);
+                    s = ss.substring(ss.length() - 1, ss.length());
+                    if (s.equals("÷") || s.equals("×") || s.equals("+") || s.equals("-")) {
+                        ss = ss.substring(0, ss.length() - 1);
                     }
-                    ss+="÷";
+                    ss += "÷";
                     text.setText(ss);
-                }
-                else return;
+                    e = true;
+                } else return;
             }
         });
         button11.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (ss.length() != 0) {
-                    s=ss.substring(ss.length()-1,ss.length());
-                    if(s.equals("÷")|| s.equals("×") || s.equals("+") || s.equals("-")){
-                        ss=ss.substring(0,ss.length()-1);
+                    s = ss.substring(ss.length() - 1, ss.length());
+                    if (s.equals("÷") || s.equals("×") || s.equals("+") || s.equals("-")) {
+                        ss = ss.substring(0, ss.length() - 1);
                     }
-                    ss+="×";
+                    ss += "×";
                     text.setText(ss);
-                }
-                else return;
+                    e = true;
+                } else return;
             }
         });
         button12.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(ss.length()!=0){
-                    s=ss.substring(ss.length()-1,ss.length());
-                    if(s.equals("÷")|| s.equals("×") || s.equals("+") || s.equals("-")){
-                        ss=ss.substring(0,ss.length()-1);
+                if (ss.length() != 0) {
+                    s = ss.substring(ss.length() - 1, ss.length());
+                    if (s.equals("÷") || s.equals("×") || s.equals("+") || s.equals("-")) {
+                        ss = ss.substring(0, ss.length() - 1);
                     }
-                    ss+="+";
+                    ss += "+";
                     text.setText(ss);
-                }
-                else return;
-                }
+                    e = true;
+                } else return;
+            }
         });
         button13.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ss.length() != 0 && (ss.charAt(ss.length()) > '0' && ss.charAt(ss.length()) <= 9)){
-                    ss+=".";
+                if (ss.length() != 0) {
+                    s = ss.substring(ss.length() - 1, ss.length());
+                    if (s.equals("0") || s.equals("1") || s.equals("2") || s.equals("3") || s.equals("4") || s.equals("5") || s.equals("6") || s.equals("7")
+                            || s.equals("8") || s.equals("9")) {
+                        if (e) {
+                            ss += ".";
+                            text.setText(ss);
+                            e = false;
+                        }
+                    }
+                } else {
+                    ss += "0.";
                     text.setText(ss);
                 }
             }
@@ -200,42 +229,45 @@ public class MainActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (ss.length() != 0) {
+
                     s = ss.substring(ss.length() - 1, ss.length());
                     if (s.equals("÷") || s.equals("×") || s.equals("+") || s.equals("-")) {
                         ss = ss.substring(0, ss.length() - 1);
                     }
-                    ss+="-";
+                    ss += "-";
+                    text.setText(ss);
+                    e = true;
+                } else {
+                    ss += "-";
                     text.setText(ss);
                 }
-                else return;
-                }
+            }
         });
         button17.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(ss.length()!=0){
+                if (ss.length() != 0) {
 
-                    if(e=ss.matches("[0-9][0-9]")){
-                        d=Integer.valueOf(ss);
-                        System.out.println("this is te");
-                        text.setText(String.valueOf(Math.sin(Double.valueOf(d))));
+                    if (e = ss.matches("[0-9][0-9]")) {
+                        d = Integer.valueOf(ss);
+                        ss = String.valueOf(Math.cos(Double.valueOf(d * (PI / 180))));
+                        text.setText(ss);
                     }
-                    if(e=ss.matches("[0-9]")){
-                        d=Integer.valueOf(ss);
-                        System.out.println("this is te");
-                        text.setText(String.valueOf(Math.sin(Double.valueOf(d))));
+                    if (e = ss.matches("[0-9]")) {
+                        d = Integer.valueOf(ss);
+                        ss = String.valueOf(Math.cos(Double.valueOf(d * (PI / 180))));
+                        text.setText(ss);
                     }
-                    if(e=ss.matches("[0-9][0-9][0-9][0-9]")){
-                        d=Integer.valueOf(ss);
-                        System.out.println("this is te");
-                        text.setText(String.valueOf(Math.sin(Double.valueOf(d))));
+                    if (e = ss.matches("[0-9][0-9][0-9][0-9]")) {
+                        d = Integer.valueOf(ss);
+                        ss = String.valueOf(Math.cos(Double.valueOf(d * PI / 180)));
+                        text.setText(ss);
                     }
-                    if(e=ss.matches("[0-9][0-9][0-9]")){
-                        d=Integer.valueOf(ss);
-                        System.out.println("this is te");
-                        text.setText(String.valueOf(Math.sin(Double.valueOf(d))));
-                    }
-                    else return;
+                    if (e = ss.matches("[0-9][0-9][0-9]")) {
+                        d = Integer.valueOf(ss);
+                        ss = String.valueOf(Math.cos(Double.valueOf(d * PI / 180)));
+                        text.setText(ss);
+                    } else return;
                 }
 
             }
@@ -243,33 +275,78 @@ public class MainActivity2 extends AppCompatActivity {
         button18.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(ss.length()!=0){
+                if (ss.length() != 0) {
 
-                    if(e=ss.matches("[0-9][0-9]")){
-                        d=Integer.valueOf(ss);
-                        System.out.println("this is te");
-                        text.setText(String.valueOf(Math.cos(Double.valueOf(d))));
+                    if (e = ss.matches("[0-9][0-9]")) {
+                        d = Integer.valueOf(ss);
+                        ss = String.valueOf(Math.cos(Double.valueOf(d * PI)));
+                        text.setText(ss);
                     }
-                    if(e=ss.matches("[0-9]")){
-                        d=Integer.valueOf(ss);
-                        System.out.println("this is te");
-                        text.setText(String.valueOf(Math.cos(Double.valueOf(d))));
+                    if (e = ss.matches("[0-9]")) {
+                        d = Integer.valueOf(ss);
+                        ss = String.valueOf(Math.cos(Double.valueOf(d * PI)));
+                        text.setText(ss);
                     }
-                    if(e=ss.matches("[0-9][0-9][0-9][0-9]")){
-                        d=Integer.valueOf(ss);
-                        System.out.println("this is te");
-                        text.setText(String.valueOf(Math.cos(Double.valueOf(d))));
+                    if (e = ss.matches("[0-9][0-9][0-9][0-9]")) {
+                        d = Integer.valueOf(ss);
+                        ss = String.valueOf(Math.cos(Double.valueOf(d * PI)));
+                        text.setText(ss);
                     }
-                    if(e=ss.matches("[0-9][0-9][0-9]")){
-                        d=Integer.valueOf(ss);
-                        System.out.println("this is te");
-                        text.setText(String.valueOf(Math.cos(Double.valueOf(d))));
-                    }
-                    else return;
+                    if (e = ss.matches("[0-9][0-9][0-9]")) {
+                        d = Integer.valueOf(ss);
+                        ss = String.valueOf(Math.cos(Double.valueOf(d * PI)));
+                        text.setText(ss);
+                    } else return;
                 }
+            }
+        });
+        button19.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ss.length() != 0) {
+                    s = ss.substring(ss.length() - 1, ss.length());
+                    if (s.equals("+") || s.equals("-") || s.equals("×") || s.equals("÷")) {
+                        ss += "(";
+                        text.setText(ss);
+                        a += 1;
+                    } else return;
+                } else {
+                    ss += "(";
+                    text.setText(ss);
+                    a = a + 1;
+                }
+            }
+        });
+        button21.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ss.length() != 0) {
+
+                    if (ss.substring(ss.length() - 1, ss.length()).equals("(")) {
+                        return;
+                    } else {
+                        if (a > 0) {
+                            ss += ")";
+                            text.setText(ss);
+                            a = a - 1;
+                        }
+                    }
+
+                } else return;
+            }
+        });
+        button20.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               text.setText(Index.calc(Houzui(ss)));
+               ss="";
             }
         });
     }
 
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
 }
