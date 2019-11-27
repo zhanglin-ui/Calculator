@@ -250,22 +250,22 @@ public class MainActivity2 extends AppCompatActivity {
 
                     if (e = ss.matches("[0-9][0-9]")) {
                         d = Integer.valueOf(ss);
-                        ss = String.valueOf(Math.cos(Double.valueOf(d * (PI / 180))));
+                        ss = String.valueOf(Math.sin(Double.valueOf(d * (PI / 180))));
                         text.setText(ss);
                     }
                     if (e = ss.matches("[0-9]")) {
                         d = Integer.valueOf(ss);
-                        ss = String.valueOf(Math.cos(Double.valueOf(d * (PI / 180))));
+                        ss = String.valueOf(Math.sin(Double.valueOf(d * (PI / 180))));
                         text.setText(ss);
                     }
                     if (e = ss.matches("[0-9][0-9][0-9][0-9]")) {
                         d = Integer.valueOf(ss);
-                        ss = String.valueOf(Math.cos(Double.valueOf(d * PI / 180)));
+                        ss = String.valueOf(Math.sin(Double.valueOf(d * PI / 180)));
                         text.setText(ss);
                     }
                     if (e = ss.matches("[0-9][0-9][0-9]")) {
                         d = Integer.valueOf(ss);
-                        ss = String.valueOf(Math.cos(Double.valueOf(d * PI / 180)));
+                        ss = String.valueOf(Math.sin(Double.valueOf(d * PI / 180)));
                         text.setText(ss);
                     } else return;
                 }
