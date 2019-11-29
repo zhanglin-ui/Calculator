@@ -104,7 +104,7 @@ import static android.widget.Toast.LENGTH_SHORT;
                 s8 = "km3:";
                 if (s5.length() != 0) {
                     for (int i = 0; i <= s5.length() - 1; i++) {
-                        char ch = s5.charAt('i');
+                        char ch = s5.charAt(i);
                         String s = ch + "";
                         if (Character.isDigit(ch) || ch == '.') {
                             ss += s;
@@ -112,9 +112,9 @@ import static android.widget.Toast.LENGTH_SHORT;
                             double e = a * 1000000;
                             double f = a * 1000;
                             double g = a / 1000000000;
-                            text6.setText(s6 + e);
-                            text7.setText(s7 + f);
-                            text8.setText(s8 + g);
+                            text6.setText(s6 + "          "+e);
+                            text7.setText(s7 + "          "+f);
+                            text8.setText(s8 + "          "+g);
                         }
                         else{
                             Toast.makeText(getApplicationContext(), "Input Error!", LENGTH_SHORT).show();
@@ -136,19 +136,21 @@ import static android.widget.Toast.LENGTH_SHORT;
                  s12="十六进制:";
                  if(s9.length()!=0){
                      for(int i=0;i<=s9.length()-1;i++){
-                         char ch= s10.charAt(i);
+                         char ch= s9.charAt(i);
                          String s=ch+"";
                          if(Character.isDigit(ch)){
-                             temp=temp+s;
-                             int a=Integer.valueOf(temp);
-                             String b=Integer.toBinaryString(10);
-                             String d=Integer.toHexString(10);
-                             String c=Integer.toOctalString(10);
-                             text10.setText(s10+b);
-                             text11.setText(s11+c);
-                             text12.setText(s12+d);
+                             temp+=s;
+                             int a=Integer.parseInt(temp);
+                             String b=Integer.toBinaryString(a);
+                             String d=Integer.toHexString(a);
+                             String c=Integer.toOctalString(a);
+                             text10.setText(s10+"           "+b);
+                             text11.setText(s11+"           "+c);
+                             text12.setText(s12+"           "+d);
                          }
-                         else  Toast.makeText(getApplicationContext(),"Input Error!",LENGTH_SHORT).show();
+                         else{
+                             Toast.makeText(getApplicationContext(),"Input Error!",LENGTH_SHORT).show();
+                         }
                      }
                  }
                  else Toast.makeText(getApplicationContext(),"Please input Number!",LENGTH_SHORT).show();

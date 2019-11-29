@@ -1,15 +1,20 @@
 package com.example.hello;
 
+import android.content.ClipData;
+import android.content.Intent;
 import android.os.Bundle;
 
 
 
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import android.view.View;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import static com.example.hello.Index.Houzui;
@@ -72,6 +77,7 @@ public class MainActivity2 extends AppCompatActivity {
         Button button19 = (Button) findViewById(R.id.button19);
         Button button20 = (Button) findViewById(R.id.button20);
         Button button21 = (Button) findViewById(R.id.button21);
+        MenuItem cd_item=(MenuItem) findViewById(R.id.cd_item);
         final TextView text = (TextView) findViewById(R.id.text);
         button1.setOnClickListener(new OnClickListener() {
             @Override
@@ -247,27 +253,21 @@ public class MainActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (ss.length() != 0) {
-
-                    if (e = ss.matches("[0-9][0-9]")) {
-                        d = Integer.valueOf(ss);
-                        ss = String.valueOf(Math.sin(Double.valueOf(d * (PI / 180))));
-                        text.setText(ss);
+                    String temp = new String();
+                    for (int i = 0; i < ss.length() - 1; i++) {
+                        char ch = ss.charAt(i);
+                        String sh = ch + "";
+                        if (Character.isDigit(ch) || ch == '.') {
+                            temp += sh;
+                            double a = Double.valueOf(temp);
+                            double b = Math.sin(a);
+                            text.setText("" + b);
+                        }
+                        else Toast.makeText(getApplicationContext(),"Input Error!",Toast.LENGTH_SHORT).show();
                     }
-                    if (e = ss.matches("[0-9]")) {
-                        d = Integer.valueOf(ss);
-                        ss = String.valueOf(Math.sin(Double.valueOf(d * (PI / 180))));
-                        text.setText(ss);
-                    }
-                    if (e = ss.matches("[0-9][0-9][0-9][0-9]")) {
-                        d = Integer.valueOf(ss);
-                        ss = String.valueOf(Math.sin(Double.valueOf(d * PI / 180)));
-                        text.setText(ss);
-                    }
-                    if (e = ss.matches("[0-9][0-9][0-9]")) {
-                        d = Integer.valueOf(ss);
-                        ss = String.valueOf(Math.sin(Double.valueOf(d * PI / 180)));
-                        text.setText(ss);
-                    } else return;
+                }
+                else {
+                    Toast.makeText(getApplicationContext(),"Please Input Number!",Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -276,27 +276,21 @@ public class MainActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (ss.length() != 0) {
-
-                    if (e = ss.matches("[0-9][0-9]")) {
-                        d = Integer.valueOf(ss);
-                        ss = String.valueOf(Math.cos(Double.valueOf(d * PI)));
-                        text.setText(ss);
+                    String temp=new String();
+                    for(int i=0;i<ss.length()-1;i++){
+                        char ch=ss.charAt(i);
+                        String sh=ch+"";
+                        if(Character.isDigit(ch) || ch=='.'){
+                            temp+=sh;
+                            double a=Double.valueOf(temp);
+                            double b=Math.cos(a);
+                            text.setText(""+b);
+                        }
+                        else Toast.makeText(getApplicationContext(),"Input Error!",Toast.LENGTH_SHORT).show();
                     }
-                    if (e = ss.matches("[0-9]")) {
-                        d = Integer.valueOf(ss);
-                        ss = String.valueOf(Math.cos(Double.valueOf(d * PI)));
-                        text.setText(ss);
-                    }
-                    if (e = ss.matches("[0-9][0-9][0-9][0-9]")) {
-                        d = Integer.valueOf(ss);
-                        ss = String.valueOf(Math.cos(Double.valueOf(d * PI)));
-                        text.setText(ss);
-                    }
-                    if (e = ss.matches("[0-9][0-9][0-9]")) {
-                        d = Integer.valueOf(ss);
-                        ss = String.valueOf(Math.cos(Double.valueOf(d * PI)));
-                        text.setText(ss);
-                    } else return;
+                }
+                else {
+                    Toast.makeText(getApplicationContext(),"Please Input Number!",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -348,5 +342,14 @@ public class MainActivity2 extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()==R.id.cd_item) {
+            Intent intent = new Intent(MainActivity2.this,MainActivity.class);
+            startActivity(intent);
+        }
+        return super.onContextItemSelected(item);
     }
 }

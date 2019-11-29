@@ -89,7 +89,7 @@ public class Index {
                     arr1.add(String.valueOf(c));
                     break;
                 case "÷":
-                    BigDecimal d=new BigDecimal(arr1.remove(j-2)).divide(new BigDecimal(arr1.remove(j-2)));
+                    BigDecimal d=new BigDecimal(arr1.remove(j-2)).divide(new BigDecimal(arr1.remove(j-2)),9);
                     arr1.add(String.valueOf(d));
                     break;
                 default:arr1.add(arr.get(i));break;
