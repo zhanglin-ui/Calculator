@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Stack;
 
 public class Index {
-    public static Stack Houzui(String s){
+    public static Stack biaodashi(String s){
         Stack<String> stacka=new Stack<String>();
         Stack<String> stackb=new Stack<String>();
         String Temp=new String();
@@ -33,10 +33,11 @@ public class Index {
                 }
                 if (c == '(') stackb.push(m);
                 else if (c == ')') {
-                    while (!stackb.isEmpty()) {
+                    while (!stackb.isEmpty() && !stackb.peek().equals("(")) {
                         String r = stackb.pop();
                         stacka.push(r);
                     }
+                    if(stackb.peek().equals("(")) stackb.pop();
                 }
                 else {
                     switch (c) {
@@ -66,35 +67,47 @@ public class Index {
         }
         return stacka;
     }
-    public static String calc(Stack<String> stacka){
+    public static String compute(Stack<String> stacka){
         ArrayList<String> arr=new ArrayList<String>();
+        ArrayList<String> arr1=new ArrayList<String>();
         while(!stacka.isEmpty()){
             String t=stacka.pop();
             arr.add(t);
         }
-        ArrayList<String> arr1=new ArrayList<String>();
-        for(int i=arr.size()-1;i>=0;i--){
-            int j=arr1.size();
-            switch (arr.get(i)){
+        for(int p=arr.size()-1;p>=0;p--){
+            arr1.add(arr.get(p));
+        }
+        for(int i=0;i<=arr1.size()-1;i++){
+            System.out.println(arr1.get(i));
+        }
+        Stack<String> stackc=new Stack<String>();
+        for(int i=0;i<=arr1.size()-1;i++){
+            switch(arr1.get(i)){
                 case "+":
-                    BigDecimal a=new BigDecimal(arr1.remove(j-2)).add(new BigDecimal(arr1.remove(j-2)));
-                    arr1.add(String.valueOf(a));
+                    BigDecimal a=new BigDecimal(stackc.pop()).add(new BigDecimal(stackc.pop()));
+                    stackc.push(String.valueOf(a));
                     break;
                 case "-":
-                    BigDecimal b=new BigDecimal(arr1.remove(j-2)).subtract(new BigDecimal(arr1.remove(j-2)));
-                    arr1.add(String.valueOf(b));
+                    double u=Double.valueOf(stackc.pop());
+                    double w=Double.valueOf(stackc.pop());
+                    BigDecimal b=new BigDecimal(w).subtract(new BigDecimal(u));
+                    stackc.push(String.valueOf(b));
                     break;
                 case "×":
-                    BigDecimal c=new BigDecimal(arr1.remove(j-2)).multiply(new BigDecimal(arr1.remove(j-2)));
-                    arr1.add(String.valueOf(c));
+                    BigDecimal c=new BigDecimal(stackc.pop()).multiply(new BigDecimal(stackc.pop()));
+                    stackc.push(String.valueOf(c));
                     break;
                 case "÷":
-                    BigDecimal d=new BigDecimal(arr1.remove(j-2)).divide(new BigDecimal(arr1.remove(j-2)),9);
-                    arr1.add(String.valueOf(d));
+                    double t=Double.valueOf(stackc.pop());
+                    double y=Double.valueOf(stackc.pop());
+                    BigDecimal d=new BigDecimal(y).divide(new BigDecimal(t),6,BigDecimal.ROUND_HALF_UP);
+                    stackc.push(String.valueOf(d));
                     break;
-                default:arr1.add(arr.get(i));break;
+                case "":
+                    break;
+                    default:stackc.push(arr1.get(i));break;
             }
         }
-        return arr1.get(0);
+      return stackc.pop();
     }
 }

@@ -17,7 +17,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import static com.example.hello.Index.Houzui;
+import static com.example.hello.Index.biaodashi;
 import static java.lang.Integer.parseInt;
 import static java.lang.Math.sin;
 import static java.lang.Math.cos;
@@ -50,7 +50,6 @@ public class MainActivity2 extends AppCompatActivity {
     int d = 0, a = 0;
     boolean e = true;
     String c;
-    public double PI = 4 * Math.atan(1);
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -260,8 +259,9 @@ public class MainActivity2 extends AppCompatActivity {
                         if (Character.isDigit(ch) || ch == '.') {
                             temp += sh;
                             double a = Double.valueOf(temp);
-                            double b = Math.sin(a);
-                            text.setText("" + b);
+                            double b = a*Math.PI/180;
+                            double c=Math.sin(b);
+                            text.setText("" + c);
                         }
                         else Toast.makeText(getApplicationContext(),"Input Error!",Toast.LENGTH_SHORT).show();
                     }
@@ -283,8 +283,9 @@ public class MainActivity2 extends AppCompatActivity {
                         if(Character.isDigit(ch) || ch=='.'){
                             temp+=sh;
                             double a=Double.valueOf(temp);
-                            double b=Math.cos(a);
-                            text.setText(""+b);
+                            double b=a*Math.PI/180;
+                            double c=Math.cos(b);
+                            text.setText(""+c);
                         }
                         else Toast.makeText(getApplicationContext(),"Input Error!",Toast.LENGTH_SHORT).show();
                     }
@@ -315,14 +316,13 @@ public class MainActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (ss.length() != 0) {
-
                     if (ss.substring(ss.length() - 1, ss.length()).equals("(")) {
                         return;
                     } else {
                         if (a > 0) {
+                            a=a-1;
                             ss += ")";
                             text.setText(ss);
-                            a = a - 1;
                         }
                     }
 
@@ -332,8 +332,27 @@ public class MainActivity2 extends AppCompatActivity {
         button20.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-               text.setText(Index.calc(Houzui(ss)));
-               ss="";
+                if (ss.length() == 0) {
+                    Toast.makeText(getApplicationContext(),"请输入表达式！",Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    if(a>0){
+                        Toast.makeText(getApplicationContext(),"请输入正确的表达式！",Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        String temp=ss.substring(ss.length()-1,ss.length());
+                        if(temp.equals("+")||temp.equals("-")||temp.equals("÷")||temp.equals("×")||temp.equals(".")){
+                            Toast.makeText(getApplicationContext(),"Input Error！",Toast.LENGTH_SHORT).show();
+                        }
+                        if(ss.matches("\\d+")){
+
+                        }
+                        else {
+                            text.setText(Index.compute(biaodashi(ss)));
+                            ss = "";
+                        }
+                    }
+                }
             }
         });
     }
@@ -346,10 +365,15 @@ public class MainActivity2 extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId()==R.id.cd_item) {
-            Intent intent = new Intent(MainActivity2.this,MainActivity.class);
-            startActivity(intent);
-        }
+       switch(item.getItemId()){
+           case R.id.cd_item:
+               Intent i=new Intent(MainActivity2.this,MainActivity.class);
+               startActivity(i);
+               break;
+           case R.id.bz_item:
+               Intent j=new Intent(MainActivity2.this,bangzhu.class);
+               startActivity(j);
+       }
         return super.onContextItemSelected(item);
     }
 }
